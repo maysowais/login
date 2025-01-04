@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #0a0f0f, #3d2f1b);
+      overflow: hidden;
+    }
+
+    .container {
+      width: 400px;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .input-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-container input {
+      width: 100%;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #fff;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+
+    .input-container input:focus {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .input-container label {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: #a6915d;
+      font-size: 16px;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    .input-container input:focus + label,
+    .input-container input:not(:placeholder-shown) + label {
+      top: 5px;
+      font-size: 12px;
+      color: #fff;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px 15px;
+      background: #a6915d;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #0a0f0f;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #8e7b4d;
+    }
+
+    .link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #a6915d;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .link:hover {
+      color: #fff;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      text-align: center;
+      color: #a6915d;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Login Form -->
+    <div id="login-form">
+      <h2>Login</h2>
+      <form>
+        <div class="input-container">
+          <input type="text" id="login-username" required placeholder=" ">
+          <label for="login-username">Username</label>
+        </div>
+        <div class="input-container">
+          <input type="password" id="login-password" required placeholder=" ">
+          <label for="login-password">Password</label>
+        </div>
+        <button type="submit" class="btn">Sign In</button>
+        <span class="link" id="forgot-password">Forgot Password?</span>
+        <span class="link" id="go-to-signup">Create Account</span>
+      </form>
+      <div id="login-message" class="message hidden"></div>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div id="signup-form" class="hidden">
+      <h2>Create Account</h2>
+      <form>
+        <div class="input-container">
+          <input type="text" id="signup-username" required placeholder=" ">
+          <label for="signup-username">Username</label>
+        </div>
+        <div class="input-container">
+          <input type="email" id="signup-email" required placeholder=" ">
+          <label for="signup-email">Email</label>
+        </div>
+        <div class="input-container">
+          <input type="password" id="signup-password" required placeholder=" ">
+          <label for="signup-password">Password</label>
+        </div>
+        <div class="input-container">
+          <input type="password" id="signup-confirm-password" required placeholder=" ">
+          <label for="signup-confirm-password">Confirm Password</label>
+        </div>
+        <button type="submit" class="btn" id="signup-submit">Sign Up</button>
+        <span class="link" id="back-to-login">Back to Login</span>
+      </form>
+      <div id="signup-message" class="message hidden"></div>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const goToSignup = document.getElementById('go-to-signup');
+    const backToLogin = document.getElementById('back-to-login');
+    const forgotPassword = document.getElementById('forgot-password');
+    const signupSubmit = document.getElementById('signup-submit');
+    const loginMessage = document.getElementById('login-message');
+    const signupMessage = document.getElementById('signup-message');
+    goToSignup.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginForm.classList.add('hidden');
+      signupForm.classList.remove('hidden');
+    });
+    backToLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      signupForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+    });
+    forgotPassword.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginMessage.textContent = '😢 Oops! Password recovery is not yet implemented.';
+      loginMessage.classList.remove('hidden');
+    });
+    signupSubmit.addEventListener('click', (e) => {
+      e.preventDefault();
+      signupMessage.textContent = '🎉 Welcome! Your account has been created successfully.';
+      signupMessage.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
