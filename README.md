@@ -115,7 +115,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- Login Form -->
     <div id="login-form">
       <h2>Login</h2>
       <form>
@@ -133,8 +132,6 @@
       </form>
       <div id="login-message" class="message hidden"></div>
     </div>
-
-    <!-- Sign Up Form -->
     <div id="signup-form" class="hidden">
       <h2>Create Account</h2>
       <form>
